@@ -1,0 +1,9 @@
+{
+  "extends": ["tslint:latest", "tslint-config-prettier"],
+  "rules": {
+    "interface-name": [true, "never-prefix"],
+    "no-empty-interface": true,
+    "ordered-imports": true,
+    "only-arrow-functions": true
+  }
+}
