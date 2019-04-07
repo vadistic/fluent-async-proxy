@@ -52,12 +52,17 @@ $ yarn add vadistic/fluent-async-proxy@fluent-async-proxy-v0.1.0-gitpkg
 ```ts
 /*
  *
- * Paths are provided as array of tuples of propname and array of args arrays
+ * Paths segments are provided as array of tuples of propname and array of args arrays
+ *
  * type Segments = Array<[Propname, ArgsArray[]>
- * where calls are arrays of subsequent args arrays = any[][]
+ * 
+ * so
+ *
+ * type Segments = Array<[string, any[][]>
  *
  * It's not super human readable
- * but incredibly easy and clean to reduce/map/filter/whatever
+ * but incredibly handy to reduce/map/filter/validate/whatever
+ * feels like cli for js ast^^
  *
  */
 
