@@ -6,7 +6,7 @@ Imagine you'll want fluent APIs like below ✨
 
 Of course you can create chained objects/classes instances with load of boilerplate & some design restrictions. But there seems to be easier & more powerful way with ES6 proxies.
 
-There are pros & cons of meta-programming, arguably it makes code harder to reason about so use responsibly. I had in mind creating/ auto-generating api clients while, but it's kind of generic path proxy for any util.
+There are pros & cons of meta-programming, arguably it makes code harder to reason about so use responsibly. I had in mind creating/ auto-generating api clients, but it's kind of generic pattern for any path proxy.
 
 ## Features
 
