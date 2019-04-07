@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "rootDir": "src",
+    "target": "es6",
+    "lib": ["esnext"],
+    "allowJs": false,
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "declaration": false
+  },
+  "include": ["src"],
+  "exclude": ["node_mdules", "test", "dist"]
+}
