@@ -12,7 +12,7 @@ There are pros & cons of meta-programming, arguably it makes code harder to reas
 
 - create arbitrary fluent APIs for async functions
 - delay callback execution till await/ start of promise chain
-- just few lines, no dependencies (more for idea then a project)
+- just few lines, no dependencies (more like idea than a project)
 - cjs/ esm/ typescript/ tested
 
 ```ts
@@ -111,7 +111,7 @@ const comments = await client
 
 Before calling await or any of promise methods (then/catch/finally) the target of a proxy is only noop function.
 
-To unwrap proxy to promise immediately (call handler), but without awaiting - there is `.UNWRAP` trap.
+To unwrap proxy to promise/ result immediately (call handler), but without awaiting - there is `.UNWRAP` trap.
 
 ```ts
 const t = client.something()
@@ -124,4 +124,4 @@ t.UNWRAP instanceof Promise === true
 
 ```
 
-Btw. This could be theoretically used for to use this sync-functions as well
+Btw. This could be theoretically used for to use this sync-functions as well...
