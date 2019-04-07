@@ -43,7 +43,8 @@ const inLiterallyAnyShape = await client
 ```sh
 # gitpkg - I'm a bit against of using npm for tiny stuff
 
-yarn add vadistic/fluent-async-proxy@fluent-async-proxy-v0.1.0-gitpkg
+$ yarn add vadistic/fluent-async-proxy@fluent-async-proxy-v0.1.0-gitpkg
+
 ```
 
 ## Example
@@ -51,11 +52,12 @@ yarn add vadistic/fluent-async-proxy@fluent-async-proxy-v0.1.0-gitpkg
 ```ts
 /*
  *
- * Paths are provided as array of tuples = Array<[key, calls]>
+ * Paths are provided as array of tuples of propname and array of args arrays
+ * type Segments = Array<[Propname, ArgsArray[]>
  * where calls are arrays of subsequent args arrays = any[][]
  *
  * It's not super human readable
- * but incredibly easy to reduce/map/filter/whatever
+ * but incredibly easy and clean to reduce/map/filter/whatever
  *
  */
 
