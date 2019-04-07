@@ -38,6 +38,14 @@ const inLiterallyAnyShape = await client
 
 ```
 
+## Installation
+
+```sh
+# gitpkg - I'm a bit against of using npm for tiny stuff
+
+yarn add vadistic/fluent-async-proxy@fluent-async-proxy-v0.1.0-gitpkg
+```
+
 ## Example
 
 ```ts
