@@ -1,6 +1,5 @@
-type Args = any[]
-type Property = string | number
-
+export type Args = any[]
+export type Property = string | number
 export type Segments = Array<[Property, Args[]]>
 export type FluenAsyncProxyCb = (segments: Segments) => Promise<any>
 
@@ -22,7 +21,7 @@ export const fluentAsyncProxy = <T = any>(
     get: (target, key) => {
       /**
        * Promise trap
-       * - not binding anything since it seems pointles
+       * - not binding anything since it seems pointless
        * - the way it is now supports chains, await & error handling
        */
 
