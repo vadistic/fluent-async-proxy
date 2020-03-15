@@ -1,8 +1,8 @@
 # fluent-async-proxy
 
-> Cool util for creating arbitrary async fluent APIs
+> Tiny util for creating arbitrary async fluent APIs
 
-Imagine you'll want to create fluent APIs like below ✨
+Imagine you'll want to create fluent APIs ✨ ([What's that](https://en.wikipedia.org/wiki/Fluent_interface))
 
 Of course - you can create chained objects/class instances (with load of boilerplate & some design restrictions) - but there seems to be easier & more powerful way with ES6 proxies.
 
