@@ -1,59 +1,72 @@
+/** array of function arguments */
 export type Args = any[]
+/** name of method or array element */
 export type Property = string | number
+/** paths segments are provided as array of tuples of propname and array of args arrays. */
 export type Segments = Array<[Property, Args[]]>
-export type FluenAsyncProxyCb = (segments: Segments) => Promise<any>
+/** handler function called with path segments as argument after promise trap */
+export type FluenAsyncProxyHandler = (segments: Segments) => Promise<any>
 
+/** temporary empty segments */
 const idSegmenets: Segments = []
 
-const $fluentAsyncProxy = () => ({})
+/**
+ * temporary noop fn, used before async trap is triggered,
+ * $$ for safe namespacing
+ */
+const $$fluentAsyncProxy = () => ({})
 
+/**
+ * create arbitrary fluent APIs for async functions
+ */
 export const fluentAsyncProxy = <T = any>(
-  asyncCb: FluenAsyncProxyCb,
+  handler: FluenAsyncProxyHandler,
   prev: Segments = idSegmenets,
   level: number = -1
 ): T =>
-  new Proxy($fluentAsyncProxy as any, {
+  new Proxy($$fluentAsyncProxy as any, {
     apply: (target, thisArg, argArray) => {
       prev[level][1] = [...prev[level][1], argArray]
 
-      return fluentAsyncProxy(asyncCb, prev, level)
+      return fluentAsyncProxy(handler, prev, level)
     },
     get: (target, key) => {
       /**
-       * Promise trap
+       * promise trap
        * - not binding anything since it seems pointless
        * - the way it is now supports chains, await & error handling
        */
 
       if (key === 'then') {
-        return (...args: any) => asyncCb(prev).then(...args)
+        return (...args: any) => handler(prev).then(...args)
       }
       if (key === 'catch') {
-        return (...args: any) => asyncCb(prev).catch(...args)
+        return (...args: any) => handler(prev).catch(...args)
       }
       if (key === 'finally') {
-        return (...args: any) => asyncCb(prev).finally(...args)
+        return (...args: any) => handler(prev).finally(...args)
       }
 
       /**
-       * Return promise
+       * return promise
        */
       if (key === 'UNWRAP') {
-        return asyncCb(prev)
+        return handler(prev)
       }
 
       /**
-       *  Trap any string props with recursive pathProxy
+       *  trap any string props with recursive pathProxy
+       *
        *  skips symbols, because those are not safe to log here
        *  (used by node/jest etc.)
        */
       if (typeof key === 'string' || typeof key === 'number') {
         prev[level + 1] = [key, []]
-        return fluentAsyncProxy(asyncCb, prev, level + 1)
+        return fluentAsyncProxy(handler, prev, level + 1)
       }
 
       /**
-       * Noop but for semantics
+       * noop but for semantics
        */
 
       if ((key as any) in target) {
