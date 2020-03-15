@@ -5,6 +5,14 @@
   "repository": "https://github.com/vadistic/fluent-async-proxy",
   "author": "Jakub Wadas <vadistic@gmail.com>",
   "license": "MIT",
+  "keywords": [
+    "fluent",
+    "async",
+    "proxy",
+    "es6",
+    "util",
+    "typescript"
+  ],
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
